@@ -1,5 +1,5 @@
 import FakeUsersRepository from "../repositories/fakes/FakeUsersRepository";
-import FakeUserTokensRepository from "../repositories/fakes/FakeUsersTokensRepository";
+import FakeUserTokensRepository from "../repositories/fakes/FakeUserTokensRepository";
 import AplicationError from "@shared/errors/AplicationError";
 import FakeHashProvider from "../providers/HashProvider/fakes/FakeHashProvider";
 import ResetPasswordService from "./ResetPasswordService";

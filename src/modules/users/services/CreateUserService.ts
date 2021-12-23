@@ -3,7 +3,6 @@ import User from '@modules/users/infra/typeorm/entities/User';
 import AplicationError from '@shared/errors/AplicationError';
 import IUsersRepository from '../repositories/IUsersRepository';
 import { injectable, inject } from 'tsyringe';
-import "reflect-metadata";
 
 interface IRequest {
     name: string,
