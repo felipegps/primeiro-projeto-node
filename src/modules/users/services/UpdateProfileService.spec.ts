@@ -5,11 +5,12 @@ import FakeHashProvider from "../providers/HashProvider/fakes/FakeHashProvider";
 
 let fakeUsersRepository: FakeUsersRepository;
 let updateProfile: UpdateProfileService;
-let fakeHashProvider: FakeHashProvider
+let fakeHashProvider: FakeHashProvider;
 
 describe('UpdateProfile', () => {
     beforeEach(() => {
         fakeUsersRepository = new FakeUsersRepository();
+        fakeHashProvider = new FakeHashProvider();
         updateProfile = new UpdateProfileService(fakeUsersRepository, fakeHashProvider);
     });
 
@@ -20,6 +21,10 @@ describe('UpdateProfile', () => {
 
         expect(updatedUser.name).toBe('João Felipe');
         expect(updatedUser.email).toBe('newEmail@gmail.com');
+    });
+
+    it('should not be able to update the profile from non-existing user.', async () => {
+        await expect(updateProfile.execute({ user_id: 'non-existing-user-id', name: 'Felipe', email: 'felipe@gmail.com' })).rejects.toBeInstanceOf(AplicationError);
     });
 
     it('should not be able to change to another user email.', async () => {
