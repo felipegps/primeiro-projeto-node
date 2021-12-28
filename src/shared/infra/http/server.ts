@@ -24,7 +24,7 @@ app.use(errors());
 app.use((err: Error, request: Request, response: Response, _: NextFunction) => {
     if (err instanceof AplicationError) {
         return response.status(err.statusCode).json({
-            stattus: 'error',
+            status: 'error',
             message: err.message,
         });
     }
@@ -32,7 +32,7 @@ app.use((err: Error, request: Request, response: Response, _: NextFunction) => {
     console.error(err);
 
     return response.status(500).json({
-        stattus: 'error',
+        status: 'error',
         message: 'Internal server error',
     });
 });

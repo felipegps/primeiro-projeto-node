@@ -29,6 +29,8 @@ export default class S3StorageProvider implements IStorageProvider {
             ContentType: path.extname(file),
         }).promise();
 
+        await fs.promises.unlink(originalPath);
+
         return file;
     }
 
